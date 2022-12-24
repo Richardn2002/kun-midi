@@ -3,7 +3,7 @@ import wave
 import struct
 
 def song_to_wav(song, filename, SAMPLE_RATE = 8000):
-    end_times = [max(track["notes"], key = lambda x: x["end"])["end"] for track in song]
+    end_times = [max(track["notes"], key = lambda x: x["end"])["end"] for track in song["tracks"]]
     song_len = max(end_times)
     n_frames = int(song_len * SAMPLE_RATE)
 
@@ -15,7 +15,8 @@ def song_to_wav(song, filename, SAMPLE_RATE = 8000):
     for tick in range(n_frames):
         t = tick / SAMPLE_RATE
         sample = 0
-        for track in song:
+
+        for track in song["tracks"]:
             v = track["v"]
             i = instruments[track["i"]]
             for note in track["notes"]:
