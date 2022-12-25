@@ -39,7 +39,7 @@ rate, data = wavfile.read("soundfonts/Bass/242-a11.wav")
 slap_bass_info = {
     "rate": rate,
     "data": data,
-    "freq": f_table(220)["1"],
+    "freq": f_table()["3"], # The sample is actually E3 instead of E4
     "loop_start": 27385,
     "loop_len": 28206 - 27385
 }
